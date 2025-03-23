@@ -7,6 +7,12 @@ import { NavbarCollapse } from "react-bootstrap";
 import { NavbarBrand } from "react-bootstrap";
 import { NavbarToggle } from "react-bootstrap";
 import { cookies } from 'next/headers';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Produtos API',
+    description: 'Um frontend em Next.js para a API de produtos',
+}
 
 export default async function RootLayout({
     children,
