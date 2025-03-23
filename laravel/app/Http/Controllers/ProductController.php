@@ -21,7 +21,7 @@ class ProductController extends Controller
         $request->validate([
             'per_page' => 'integer|min:1',
             'page' => 'integer|min:1',
-            'category' => 'integer|min:1',
+            'category_id' => 'integer|min:1',
             'search' => 'string|max:255',
         ]);
         $categoryId = $request->query('category_id');
