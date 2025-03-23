@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(2)->create([
+        User::factory(3)->create([
             'password' => Hash::make('abcd1234'),
         ]);
-        Category::factory(3)->create()->each(function ($category) {
-            Product::factory(5)->create([
+        Category::factory(5)->create()->each(function ($category) {
+            Product::factory(20)->create([
                 'category_id' => $category->id,
             ]);
         });
