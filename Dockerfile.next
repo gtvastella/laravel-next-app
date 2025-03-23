@@ -1,0 +1,14 @@
+FROM node:23-alpine
+ENV DOCKERIZE_VERSION v0.9.3
+WORKDIR /app
+COPY next/package*.json ./
+RUN npm install
+RUN apk add --no-cache curl && \
+    wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin
+COPY next/ .
+COPY entrypoint_next.sh ./
+RUN chmod +x /app/entrypoint_next.sh
+RUN npm run build
+EXPOSE 3000
+
+ENTRYPOINT ["sh", "/app/entrypoint_next.sh"]
